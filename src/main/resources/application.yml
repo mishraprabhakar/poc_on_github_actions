@@ -1,0 +1,21 @@
+server:
+  port: 9190
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: smart-asset-tracker-application
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/**
+
+        - id: blockchain-client
+          uri: http://localhost:5150
+          predicates:
+            - Path=/**
+
+
+
